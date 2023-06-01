@@ -27,6 +27,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+LOGIN_REDIRECT_URL = "frontpage"  # reindirizza l'utente verso la pagina frontpage QUANDO FA IL LOGIN
+# senza questo darebbe errore quando si fa il login perchè manderebbe /accounts/profile/ che non esiste
+LOGOUT_REDIRECT_URL = "frontpage"  # reindirizza l'utente verso la pagina frontpage QUANDO FA IL LOGOUT
 
 # Application definition
 
