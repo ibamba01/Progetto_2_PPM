@@ -20,6 +20,7 @@
     <nav class=" head max-w-8xl mx-auto py-4 px-6 flex item-center justify-between bg-red-100 rounded-xl shadow">
         <div class="logo">
             <a class="text-2xl text-white" href="/">PPM_project</a>
+             <a href="{% url "about" %}" class="">about</a>
         </div>
 
 
@@ -36,10 +37,18 @@
 
 
 
-        <div class="flex space-x-4">
-        <a href="{% url "about" %}" class="">about</a>
+        <div class="flex items-center space-x-4">
+
+
+        <a href="{% url "cart_view" %}" class="flex py-2 px-4 rounded-xl bg-red-300">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+            </svg>({{ cart|length }})</a>
         {% if user.is_authenticated %}  <!--se l'utente è autenticato fa accedere alla pagina personale-->
-            <a href="{% url "myaccount" %}" class="">myaccount</a>
+            <a href="{% url "myaccount" %}" class=""><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
+</svg>
+</a>
             <!--<a href="{% url "my_store" %}" class="text-white">My store</a> non implementato data la natura di s  -->
         {% else %}
             <a href="{% url "login" %}" class="">login</a>
@@ -134,7 +143,7 @@
   transition: all .5s ease-in-out;
   background-color: #22a6b3;
   padding-right: 40px;
-  color:#fff;
+  color: #000000;
 }
 .search .input-search::placeholder{
   color:rgba(255,255,255,.5);
@@ -176,4 +185,101 @@
   background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);   -webkit-background-clip: text;
   color: transparent;
 }
+
+   .checkoutbtn body {
+  height: 100vh;
+  margin: 0;
+  display: grid;
+  place-items: center;
+}
+
+
+.checkoutbtn button {
+  position: relative;
+  overflow: hidden;
+  transition: background 400ms;
+  color: #fff;
+  background-color: #6200ee;
+  padding: 1rem 2rem;
+  font-size: 1.5rem;
+  outline: 0;
+  border: 0;
+  border-radius: 0.25rem;
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.3); /* black with 30% opacity */
+  cursor: pointer;
+}
+
+ .checkoutbtn span.ripple {
+  position: absolute;
+  border-radius: 50%;
+  transform: scale(0);
+  animation: ripple 600ms linear;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.checkoutbtn @keyframes ripple {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+
+              .carrello{
+        background-color: #00d20a;
+        border: none;
+        border-radius: 10px;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        margin: 4px 2px;
+        cursor: pointer;
+      box-shadow: 5px 5px 5px #494949;
+
+    }
+    .carrello:hover{
+        background-color: #fac3c3;
+      color: black;
+       box-shadow: 0 0 0;
+    }
+
+    .logout{
+        background-color: #ff0000;
+        border: none;
+        border-radius: 10px;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        margin: 4px 2px;
+        cursor: pointer;
+      box-shadow: 5px 5px 5px #494949;
+
+    }
 </style>
+<script>
+    function createRipple(event) {
+  const button = event.currentTarget;
+
+  const circle = document.createElement("span");
+  const diameter = Math.max(button.clientWidth, button.clientHeight);
+  const radius = diameter / 2;
+
+  circle.style.width = circle.style.height = `${diameter}px`;
+  circle.style.left = `${event.clientX - button.offsetLeft - radius}px`;
+  circle.style.top = `${event.clientY - button.offsetTop - radius}px`;
+  circle.classList.add("ripple");
+
+  const ripple = button.getElementsByClassName("ripple")[0];
+
+  if (ripple) {
+    ripple.remove();
+  }
+
+  button.appendChild(circle);
+}
+
+const buttons = document.getElementsByTagName("button");
+for (const button of buttons) {
+  button.addEventListener("click", createRipple);
+}
+</script>

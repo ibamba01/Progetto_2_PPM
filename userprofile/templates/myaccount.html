@@ -2,6 +2,8 @@
 
 {% block title %}my account{% endblock %}
 {% block content %}
-    <a href="{% url "logout" %}" class="py-4 px-8 bg-red-400 text-white">log out</a>
+    <button class="carrello"> <a href="{% url "cart_view" %}">vai al carrello</a></button>
+    <hr class="p-5">
+   <button class="logout"> <a href="{% url "logout" %}" >log out</a> </button>
 
 {% endblock %}

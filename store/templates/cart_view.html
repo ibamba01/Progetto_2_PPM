@@ -21,5 +21,11 @@ Cart
     {% endfor %}
 
     <p>Total: {{cart.get_total_cost}}</p>
+    <br>
+    <div class="checkoutbtn"><button><a href="{% url "checkout" %}" role="button">Checkout</a></button>
+    </div>
+
+
+
 {% endblock %}
 ```

@@ -46,6 +46,10 @@ class Cart(object):
 
             self.save()  # salva il carrello
 
+    def clear(self):  # svuota il carrello
+        del self.session[settings.CART_SESSION_ID]
+        self.session.modified = True
+
 
     def get_total_cost(self):
         for p in self.cart.keys():

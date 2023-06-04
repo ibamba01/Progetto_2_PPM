@@ -27,6 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+
+LOGIN_URL = "login"  # reindirizza l'utente verso la pagina login QUANDO NON è LOGGATO
 LOGIN_REDIRECT_URL = "frontpage"  # reindirizza l'utente verso la pagina frontpage QUANDO FA IL LOGIN
 # senza questo darebbe errore quando si fa il login perchè manderebbe /accounts/profile/ che non esiste
 LOGOUT_REDIRECT_URL = "frontpage"  # reindirizza l'utente verso la pagina frontpage QUANDO FA IL LOGOUT
@@ -82,6 +84,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "store.cartcount.cart"
             ],
         },
     },
