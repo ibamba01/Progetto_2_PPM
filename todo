@@ -11,4 +11,7 @@
 - cart
 - checkout
 - admin page vendors
--
+-login whit crispy forms
+
+
+<script src="https://cdn.tailwindcss.com"></script>

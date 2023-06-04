@@ -31,6 +31,11 @@ LOGIN_REDIRECT_URL = "frontpage"  # reindirizza l'utente verso la pagina frontpa
 # senza questo darebbe errore quando si fa il login perchè manderebbe /accounts/profile/ che non esiste
 LOGOUT_REDIRECT_URL = "frontpage"  # reindirizza l'utente verso la pagina frontpage QUANDO FA IL LOGOUT
 
+CART_SESSION_ID = "cart"  # nome della sessione del carrello
+SESSION_COOKIE_AGES = 86400  # durata della sessione in secondi (86400 secondi = 1 giorno)
+# alla fne di questa il cart è svuotato
+
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -43,8 +48,15 @@ INSTALLED_APPS = [
     "core",
     "userprofile",
     "store",
+    'crispy_forms',
+    "crispy_bootstrap5",
+
 
 ]
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
