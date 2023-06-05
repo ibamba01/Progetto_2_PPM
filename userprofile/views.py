@@ -10,7 +10,7 @@ from django.utils.text import slugify  # slugify serve per creare uno slug
 from .models import Userprofile
 
 from store.forms import ProductForm
-from store.models import Product, Category
+from store.models import Product, Category, OrderItem, Order
 
 
 def vendor_detail(request, pk):
@@ -54,6 +54,13 @@ def create_product(request):  # questa funzione serve per creare un nuovo prodot
 @login_required
 def myaccount(request):
     return render(request, "myaccount.html")
+
+@login_required
+def ordini(request):
+    orders_items = OrderItem.objects.filter(order__created_by=request.user)
+
+    return render(request, "ordini.html", {"orders_items": orders_items})
+
 
 def signup(request):
     form = UserCreationForm()
