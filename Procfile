@@ -1,1 +1,1 @@
-web: guicorn Progetto_2_PPM.wsgi --log-file -
+web: gunicorn Progetto_2_PPM.wsgi --log-file -
